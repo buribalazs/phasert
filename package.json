@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server -d --inline --hot --progress --no-info --port 9000",
     "dist": "rimraf ./dist/ && webpack -p",
-    "electron": "electron ./electron.js"
+    "electron": "electron ./electron-init.js"
   },
   "author": "Eduardo Nunes Pereira (eduardonunesp@gmail.com)",
   "license": "MIT",
@@ -20,6 +20,6 @@
     "typescript": "^2.3.3",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.1",
-    "electron": "~1.6.2"
+    "electron": "~1.6.10"
   }
 }
