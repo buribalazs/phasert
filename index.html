@@ -20,5 +20,12 @@
 </head>
 <body>
 <div id="content"></div>
+<script>
+    //todo only on user gesture
+    (document.body.requestFullscreen && document.body.requestFullscreen()) ||
+    (document.body.webkitRequestFullscreen && document.body.webkitRequestFullscreen()) ||
+    (document.body.mozRequestFullScreen && document.body.mozRequestFullScreen()) ||
+    (document.body.msRequestFullScreen && document.body.msRequestFullScreen());
+</script>
 </body>
 </html>
