@@ -10,44 +10,50 @@ var pixi = path.join(phaserModule, 'build/custom/pixi.js');
 var p2 = path.join(phaserModule, 'build/custom/p2.js');
 
 module.exports = {
-  entry: './src/index.ts',
-  output: {
-    pathInfo: true,
-    filename: '[name].bundle.js',
-    path: path.resolve('./dist'),
-    publicPath: '/'
-  },
-  plugins: [
-    new CopyWebpackPlugin([
-      {
-        from: './src/assets',
-        to:'./assets'
-      }
-    ]),
-    new HtmlWebpackPlugin({
-      template: './index.html',
-      inject: 'body',
-    }),
-    new webpack.NoErrorsPlugin(),
-  ],
-  module: {
-    loaders: [
-      { test: /pixi\.js/, loader: 'expose?PIXI' },
-      { test: /phaser-split\.js$/, loader: 'expose?Phaser' },
-      { test: /p2\.js/, loader: 'expose?p2' },
-      { test: /\.ts?$/, loader: 'ts', exclude: '/node_modules/' }
-    ]
-  },
-  node: {
-    fs: 'empty'
-  },
-  resolve: {
-    extensions: ['', '.js', '.ts'],
-    alias: {
-      'phaser': phaser,
-      'pixi': pixi,
-      'p2': p2,
-    }
-  },
-  devtool: 'source-map'
+    entry: './src/index.ts',
+    output: {
+        pathInfo: true,
+        filename: '[name].bundle.js',
+        path: path.resolve('./dist'),
+        publicPath: '/'
+    },
+    plugins: [
+        new CopyWebpackPlugin([
+            {
+                from: './src/assets',
+                to: './assets'
+            }
+        ]),
+        new CopyWebpackPlugin([
+            {
+                from: './index-electron.html',
+                to: './index-electron.html'
+            }
+        ]),
+        new HtmlWebpackPlugin({
+            template: './index.html',
+            inject: 'body',
+        }),
+        new webpack.NoErrorsPlugin(),
+    ],
+    module: {
+        loaders: [
+            {test: /pixi\.js/, loader: 'expose?PIXI'},
+            {test: /phaser-split\.js$/, loader: 'expose?Phaser'},
+            {test: /p2\.js/, loader: 'expose?p2'},
+            {test: /\.ts?$/, loader: 'ts', exclude: '/node_modules/'}
+        ]
+    },
+    node: {
+        fs: 'empty'
+    },
+    resolve: {
+        extensions: ['', '.js', '.ts'],
+        alias: {
+            'phaser': phaser,
+            'pixi': pixi,
+            'p2': p2,
+        }
+    },
+    devtool: 'source-map'
 }

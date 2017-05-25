@@ -1,6 +1,5 @@
 /// <reference path="../node_modules/phaser/typescript/phaser.d.ts"/>
 /// <reference path="../node_modules/phaser/typescript/pixi.d.ts"/>
-
 import 'pixi';
 import 'p2';
 import * as Phaser from 'phaser';
@@ -11,11 +10,12 @@ class SimpleGame {
   cursors: Phaser.CursorKeys;
 
   constructor() {
-    this.game = new Phaser.Game(800, 600, Phaser.AUTO, "content", this);
+    this.game = new Phaser.Game("100%", "100%", Phaser.AUTO, "content", this);
   }
 
   preload() {
     this.game.load.image("logo", "./assets/images/mushroom2.png");
+    this.game.scale.scaleMode = Phaser.ScaleManager.RESIZE;
   }
 
   create() {

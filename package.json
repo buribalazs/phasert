@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "scripts": {
     "start": "webpack-dev-server -d --inline --hot --progress --no-info --port 9000",
-    "dist": "rimraf ./dist/ && webpack -p"
+    "dist": "rimraf ./dist/ && webpack -p",
+    "electron": "electron ./electron.js"
   },
   "author": "Eduardo Nunes Pereira (eduardonunesp@gmail.com)",
   "license": "MIT",
@@ -18,6 +19,7 @@
     "ts-loader": "^0.8.2",
     "typescript": "^2.3.3",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack-dev-server": "^1.16.1",
+    "electron": "~1.6.2"
   }
 }
