@@ -11,7 +11,7 @@ class SimpleGame {
     cursors: Phaser.CursorKeys;
 
     constructor() {
-        this.game = new Phaser.Game(1920, 1080, Phaser.AUTO, "content", this);
+        this.game = new Phaser.Game(1280, 720, Phaser.AUTO, "content", this);
     }
 
     preload() {
