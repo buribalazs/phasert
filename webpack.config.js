@@ -10,7 +10,7 @@ var pixi = path.join(phaserModule, 'build/custom/pixi.js');
 var p2 = path.join(phaserModule, 'build/custom/p2.js');
 
 module.exports = {
-    entry: './src/index.ts',
+    entry: './src/index.js',
     output: {
         pathInfo: true,
         filename: '[name].bundle.js',
@@ -34,21 +34,29 @@ module.exports = {
             template: './index.html',
             inject: 'body',
         }),
-        new webpack.NoErrorsPlugin(),
+        // new webpack.NoErrorsPlugin(),
     ],
     module: {
         loaders: [
+            {
+                test: /\.js$/,
+                include: path.join(__dirname, 'src'),
+                loader: 'babel-loader',
+                options: {
+                    presets: ['env']
+                }
+            },
             {test: /pixi\.js/, loader: 'expose?PIXI'},
             {test: /phaser-split\.js$/, loader: 'expose?Phaser'},
             {test: /p2\.js/, loader: 'expose?p2'},
-            {test: /\.ts?$/, loader: 'ts', exclude: '/node_modules/'}
+            // {test: /\.ts?$/, loader: 'ts', exclude: '/node_modules/'}
         ]
     },
     node: {
         fs: 'empty'
     },
     resolve: {
-        extensions: ['', '.js', '.ts'],
+        extensions: ['', '.js'],
         alias: {
             'phaser': phaser,
             'pixi': pixi,
@@ -56,4 +64,4 @@ module.exports = {
         }
     },
     devtool: 'source-map'
-}
+};
