@@ -12,12 +12,9 @@ class DebuggerText extends Phaser.Text{
             fill: '#FFFFFF'
         });
     }
-
     update(){
         this.text = `${game.time.fps}\n` + Object.keys(messages).map(k => `${k}: ${messages[k]}`).slice(0,30).join('\n');
     }
-
-
 }
 
 export class Debugger{
@@ -36,9 +33,3 @@ export class Debugger{
         Object.keys(messages).forEach(k => delete messages[k]);
     }
 }
-
-// let debug = game.add.text(10,10,'asd', {
-//     font:'monospace',
-//     fontSize:14,
-//     fill:'#FFFFFF'
-// });
